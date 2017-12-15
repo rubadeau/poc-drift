@@ -7,6 +7,7 @@ bot.listen(process.env.PORT || 3000, () => console.log('POC Bot for Drift is lis
 
 bot.post('/', (req, res) => {
   if (req.body.type === 'new_message') {
+    //TODO this is for demo purposes. Do not redact token & other info in production
     delete req.body.token;
     delete req.body.orgId;
     delete req.body.data.context;
