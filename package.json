@@ -9,7 +9,13 @@
   "author": "Tristan Rubadeau",
   "license": "MIT",
   "dependencies": {
+    "async": "^2.6.0",
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "node-zendesk": "git+https://github.com/GitTristan/node-zendesk.git#impersonate",
+    "request": "^2.83.0",
+    "winston": "^2.4.0",
+    "winston-raven-sentry": "^1.0.1"
   }
 }
