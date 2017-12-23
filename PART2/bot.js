@@ -9,9 +9,6 @@ bot.listen(process.env.PORT || 3000, () => console.log('POC Bot for Drift is lis
 
 bot.post('/', (message, res) => {
   if (message.body.type === 'new_message' && message.body.data.body.startsWith('/foobar')) {
-
-
-
     let options = {
       url: 'https://driftapi.com/contacts/' + message.body.data.author.id,
       headers: {
@@ -30,9 +27,6 @@ bot.post('/', (message, res) => {
         console.log(driftContact);
       }
     })
-
-
-
   }
   return res.send('ok')
 });
