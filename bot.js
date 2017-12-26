@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bot = express();
 const bodyParser = require('body-parser');
-const request = require('request');
+const Drift = require('drift-chat');
 
 bot.use(bodyParser.json());
 bot.listen(process.env.PORT || 3000, () => console.log('POC Bot for Drift is listening on port 3000!'));
@@ -10,29 +10,16 @@ bot.listen(process.env.PORT || 3000, () => console.log('POC Bot for Drift is lis
 bot.post('/', (message, res) => {
   if (message.body.type === 'new_message' && message.body.data.body.startsWith('/foobar')) {
 
+    const drift = new Drift(process.env.DRIFTOAUTH);
 
-
-    let options = {
-      url: 'https://driftapi.com/contacts/' + message.body.data.author.id,
-      headers: {
-        'User-Agent': 'request',
-        'Authorization': 'Bearer ' + process.env.DRIFTOAUTH,
-      }
-    };
-    request(options, function(err, response, body) {
-      if (err) {
+    drift.getContact(message.body.data.author.id, function(err, statusCode, body) {
+      if(err){
         console.log(err);
       } else {
-        console.log(response.statusCode);
-
-        let driftContact = JSON.parse(body);
-        console.log('CONTACT: ');
-        console.log(driftContact);
+        console.log(statusCode);
+        console.log(body);
       }
     })
-
-
-
   }
   return res.send('ok')
 });
