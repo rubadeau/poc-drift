@@ -9,16 +9,12 @@ bot.listen(process.env.PORT || 3000, () => console.log('POC Bot for Drift is lis
 
 bot.post('/', (message, res) => {
   if (message.body.type === 'new_message' && message.body.data.body.startsWith('/foobar')) {
-
     const drift = new Drift(process.env.DRIFTOAUTH);
-
-    drift.getContact(message.body.data.author.id, function(err, statusCode, body) {
+    drift.getContact(message.body.data.author.id, function(err, body) {
       if(err){
         console.log(err);
-      } else {
-        console.log(statusCode);
-        console.log(body);
       }
+      console.log(body);
     })
   }
   return res.send('ok')
