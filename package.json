@@ -9,9 +9,11 @@
   "author": "Tristan Rubadeau",
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "dotenv": "^4.0.0",
-    "drift-chat": "^0.1.0",
-    "express": "^4.16.2"
+    "drift-chat": "^0.1.2",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.0-rc2"
   }
 }
